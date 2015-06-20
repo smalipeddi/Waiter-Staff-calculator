@@ -1,106 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <meta charset="UTF-8">
-      <title>Document</title>
-      <meta charset="utf-8">
-      <!-- Latest compiled and minified CSS -->
-      <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-      <!-- jQuery library -->
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-      <!-- Latest compiled JavaScript -->
-      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
-      <script src="https://code.angularjs.org/1.3.0/angular-messages.min.js"></script>
-      <!-- <script src="js/script.js" type="text/javascript"></script> -->
-      <link href="css/main.css" rel="stylesheet">
-      <link href='http://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
-      <script type="text/javascript" src="js/script.js"></script>
-   </head>
-   <body>
-     <!--  <div class="jumbotron">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta charset="utf-8">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="https://code.angularjs.org/1.3.0/angular-messages.min.js"></script>
+    <!-- <script src="js/script.js" type="text/javascript"></script> -->
+    <link href="css/main.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="js/script.js"></script>
+</head>
+
+<body>
+    <!--  <div class="jumbotron">
         <div class="container">
            <h1> WaiterStaff Calculator</h1>
         </div>
      </div> -->
-      <div class="container" ng-app="myApp" ng-controller="WaiterStaffCalculator"  >
-         <div class="row">
-            <div class="col-sm-6" >
-               <div class="panel panel-default" >
-                  <div class="panel-heading">Enter the Meal Details</div>
-                  <div class="panel-body">
-                     <form class="navbar-form navbar-left" ng-submit="submit()" role="search" name="myForm" novalidate >
-                        <div class="form-group" ng-class="{ 'has-error' : myForm.basemealprice.$invalid && !myForm.basemealprice.$pristine }">
-                           <label> Base Meal Price     : $   </label>
-                            <input type="number" class="form-control" name="basemealprice" placeholder="price" ng-model="MealDetails.basePrice" required  ng-minlength="2" ng-pattern="/^\d+$/" >
-                            <p ng-show="myForm.basemealprice.$invalid && !myForm.basemealprice.$pristine" class="help-block"> Base price is required.</p>
-                        </div>
-                        <br/><br/>
-                        <div class="form-group" ng-class="{ 'has-error' : myForm.taxrate.$invalid && !myForm.taxrate.$pristine }">
-                           <label> Tax  Rate          : %   </label>
-                           <input type="number" class="form-control" name="taxrate" placeholder="tax" ng-model="MealDetails.taxRate" required  ng-pattern="/^\d+$/">
-                           <p ng-show="myForm.taxrate.$invalid && !myForm.taxrate.$pristine" class="help-block"> Tax rate is required.</p>
-                        </div>
-                        <br/><br/>
-                        <div class="form-group" ng-class="{ 'has-error' : myForm.tippercent.$invalid && !myForm.tippercent.$pristine }">
-                           <label> Tip Percentage %     :    </label> 
-                           <input type="number" class="form-control" name="tippercent" placeholder="tip %" ng-model="MealDetails.tipPercent" required ng-pattern="/^\d+$/">
-                           <p ng-show="myForm.tippercent.$invalid && !myForm.tippercent.$pristine" class="help-block"> Tip percent is required.</p>
-                        </div>
-                        <br/><br/>
-                        <div class="row">
-                           <div class="col-sm-6">
-                             
-                               <button type="submit" class="btn btn-primary" ng-disabled="myForm.$invalid">Submit</button>
-        
-                           </div>
-                        </div>
-                     </form>
-                  </div>
-               </div>
+    <div class="container" ng-app="myApp" ng-controller="WaiterStaffCalculator">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Enter the Meal Details</div>
+                    <div class="panel-body">
+                        <form class="navbar-form navbar-left" ng-submit="submit()" role="search" name="myForm" novalidate>
+                            <div class="form-group" ng-class="{ 'has-error' : myForm.basemealprice.$invalid && !myForm.basemealprice.$pristine }">
+                                <label> Base Meal Price : $ </label>
+                                <input type="number" class="form-control" name="basemealprice" placeholder="price" ng-model="MealDetails.basePrice" required ng-minlength="2" ng-pattern="/^\d+$/">
+                                <p ng-show="myForm.basemealprice.$invalid && !myForm.basemealprice.$pristine" class="help-block"> Base price is required.</p>
+                            </div>
+                            <br/>
+                            <br/>
+                            <div class="form-group" ng-class="{ 'has-error' : myForm.taxrate.$invalid && !myForm.taxrate.$pristine }">
+                                <label> Tax Rate : % </label>
+                                <input type="number" class="form-control" name="taxrate" placeholder="tax" ng-model="MealDetails.taxRate" required ng-pattern="/^\d+$/">
+                                <p ng-show="myForm.taxrate.$invalid && !myForm.taxrate.$pristine" class="help-block"> Tax rate is required.</p>
+                            </div>
+                            <br/>
+                            <br/>
+                            <div class="form-group" ng-class="{ 'has-error' : myForm.tippercent.$invalid && !myForm.tippercent.$pristine }">
+                                <label> Tip Percentage % : </label>
+                                <input type="number" class="form-control" name="tippercent" placeholder="tip %" ng-model="MealDetails.tipPercent" required ng-pattern="/^\d+$/">
+                                <p ng-show="myForm.tippercent.$invalid && !myForm.tippercent.$pristine" class="help-block"> Tip percent is required.</p>
+                            </div>
+                            <br/>
+                            <br/>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <button type="submit" class="btn btn-primary" ng-disabled="myForm.$invalid">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-         
+
             <div class="col-sm-6">
 
-               <div class ="row">
-               <div clas = "col-sm-12">
-               <div class="panel panel-default">
-                  <div class="panel-heading">
-                     <h3 class="panel-title">Customer charges</h3>
-                  </div>
-                  <div class="panel-body">
-                     <label>Sub Total : {{cutomerCharges.subTotal}}</label><br/><br/>
-                     <label> Tip  :{{cutomerCharges.waiterTip}} </label><br/><br/>
-                     <label>---------------------------</label><br/><br/>
-                     <label>Total : {{cutomerCharges.total}}</label>
-                  </div>
-               </div>
+                <div class="row">
+                    <div clas="col-sm-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Customer charges</h3>
+                            </div>
+                            <div class="panel-body">
+                                <label>Sub Total : {{cutomerCharges.subTotal}}</label>
+                                <br/>
+                                <br/>
+                                <label> Tip :{{cutomerCharges.waiterTip}} </label>
+                                <br/>
+                                <br/>
+                                <label>---------------------------</label>
+                                <br/>
+                                <br/>
+                                <label>Total : {{cutomerCharges.total}}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">My Earnings Info</h3>
+                            </div>
+                            <div class="panel-body">
+                                <label>Total Tip : {{WaiterEarnings.tipCount}}</label>
+                                <br/>
+                                <br/>
+                                <label> Meal Count : {{MealDetails.mealCount}} </label>
+                                <br/>
+                                <br/>
+                                <label>---------------------------</label>
+                                <br/>
+                                <br/>
+                                <label>Average Tip per Meal:{{WaiterEarnings.AverageTip}} </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            </div>
-            <div class="row">
-            <div class="col-sm-12">
-            
-               <div class="panel panel-default">
-                  <div class="panel-heading">
-                     <h3 class="panel-title">My Earnings Info</h3>
-                  </div>
-                  <div class="panel-body">
-                     <label>Total Tip : {{WaiterEarnings.tipCount}}</label><br/><br/>
-                     <label> Meal Count  : {{MealDetails.mealCount}} </label><br/><br/>
-                     <label>---------------------------</label><br/><br/>
-                     <label>Average Tip per Meal:{{WaiterEarnings.AverageTip}} </label>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
-   </div>
-   <div class="row">
-   <div class="col-sm-4" style="margin-left:35em;">
-         <button class="btn btn-default" ng-click="reset()">Reset</button>
-      </div>
-   </div>
-   </body>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4" style="margin-left:35em;">
+            <button class="btn btn-default" ng-click="reset()">Reset</button>
+        </div>
+    </div>
+</body>
+
 </html>
-
-
